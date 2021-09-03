@@ -10,9 +10,13 @@ const [selected, setSelected] = useState(null)
 
 
 const search = (query) => {
+  setSelected(null)
   youtube
   .search(query)
-  .then(items=>setVideos(items))
+  .then(items=> {
+    setVideos(items)
+
+  })
 
 };
 
@@ -27,10 +31,17 @@ const onVideoClick = (video) => {
 
   return (
     <div className= {styles.app}>
-    <SearchHeader onSearch={search}/>
-    {selected && <VideoDetail videos={selected}/>}
-    <VideoList videos = {videos}onVideoClick={onVideoClick}/>
-   
+    <SearchHeader onSearch={search} onVideoClick= {onVideoClick}/>
+
+    <section className={styles.content}>
+    {selected &&  
+    <div className = {styles.detail}>
+    <VideoDetail videos={selected}/>
+      </div>}
+      <div className = {styles.list}>
+        <VideoList videos = {videos}onVideoClick={onVideoClick} display ={selected ? 'list': 'gird'}/>
+      </div>
+    </section>
     
     </div>
   );
