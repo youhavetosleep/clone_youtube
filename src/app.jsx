@@ -23,7 +23,7 @@ const search = (query) => {
 useEffect(()=> {
   youtube.mostPopular()
   .then(items=>setVideos(items))
-}, [])
+}, [youtube])
 
 const onVideoClick = (video) => {
   setSelected(video)

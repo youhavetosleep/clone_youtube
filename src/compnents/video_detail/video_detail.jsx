@@ -8,6 +8,7 @@ const VideoDetail = ({videos}) => {
                 <iframe 
                 className={styles.video}
                 type="text/html" 
+                title='youtube video player'
                 width="100%" 
                 height="400px"
                 src={`http://www.youtube.com/embed/${videos.id}`}
